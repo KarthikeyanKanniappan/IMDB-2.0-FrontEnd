@@ -1,0 +1,28 @@
+import React, { useEffect } from "react";
+import Carder from "../components/Carder";
+import { useDispatch, useSelector } from "react-redux";
+import { getMovie } from "../redux/movieSlice";
+const HomePage = () => {
+  const dispatch = useDispatch();
+  const { AllMovies, loading } = useSelector((state) => ({ ...state.movie }));
+
+  useEffect(() => {
+    dispatch(getMovie());
+  }, []);
+
+  return (
+    <div className="container-fluid mt-3 ">
+      <div className="row m-auto ">
+        {AllMovies.map((movie, i) => {
+          return (
+            <div key={i} className="col-lg-4 col-md-6 m-auto pb-4">
+              <Carder movie={movie} />
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default HomePage;
