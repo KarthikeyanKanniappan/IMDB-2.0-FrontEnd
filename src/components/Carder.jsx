@@ -6,7 +6,7 @@ const Carder = ({ movie }) => {
   return (
     <Card
       className="m-auto"
-      style={{ width: "18rem", color: "white", border: "none" }}
+      style={{ width: "18rem", backgroundColor:"#000000", color: "white", border: "none" }}
     >
       <Card.Img
         style={{ width: "18rem", height: "18rem" }}

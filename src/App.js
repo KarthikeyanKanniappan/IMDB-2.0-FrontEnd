@@ -7,7 +7,7 @@ import MainForm from "./components/MainForm";
 
 function App() {
   return (
-    <>
+    <div style={{backgroundColor:"#000000"}}>
       <BrowserRouter>
         <TopBar />
         <Routes>
@@ -15,7 +15,7 @@ function App() {
           <Route path="/add" element={<MainForm />} />
         </Routes>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 
