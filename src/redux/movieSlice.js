@@ -18,7 +18,7 @@ export const createMovie = createAsyncThunk(
   async ({updatedValue,navigate},{rejectWithValue})=>{
     try{
       const response = await api.createMovie(updatedValue);
-      // alert("Movie Added")
+      alert("Movie Added")
       navigate("/");
       return response.data;
     }catch(err){

@@ -14,6 +14,19 @@ export const getProducer = createAsyncThunk(
   }
 );
 
+export const createProducer = createAsyncThunk(
+  "producer/createProducer",
+  async ({values,navigate},{rejectWithValue})=>{
+    try{
+      const response = await api.createProducer(values);
+      alert("Producer Added")
+      navigate("/");
+      return response.data;
+    }catch(err){
+      return rejectWithValue(err.response.data);
+    }
+  }
+)
 
 const producerSlice = createSlice({
   name: "producer",
@@ -31,6 +44,17 @@ const producerSlice = createSlice({
       state.allProducer = action.payload;
     },
     [getProducer.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
+    [createProducer.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [createProducer.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.AllMovies = action.payload;
+    },
+    [createProducer.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.payload.message;
     },

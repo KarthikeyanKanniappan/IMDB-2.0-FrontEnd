@@ -53,18 +53,11 @@ const MainForm = () => {
       if (values.poster === "") {
         errors.poster = "Please enter poster of movie";
       }
-      // if (values.actors[0] === undefined) {
-      //   errors.actors = "Please enter actors";
-      // }
-      // if (values.producer === "") {
-      //   errors.producer = "Please enter producer";
-      // }
       return errors;
     },
-    onSubmit:  (values) => {
+    onSubmit:  (values) => { 
       let updatedValue ={ ...values , actors:member,producer:member1[0],allActors:"",
       allProducer:""}
-      console.log(updatedValue)
      dispatch(createMovie({updatedValue,navigate}))
     },
   });

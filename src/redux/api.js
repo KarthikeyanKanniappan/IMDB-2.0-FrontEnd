@@ -16,6 +16,14 @@ export const getProducer = () => {
   return API.get("/producer/");
 };
 
-export const createMovie = () => {
-  return API.post("/movie/add");
+export const createMovie = (value) => {
+  return API.post("/movie/add",value);
+};
+
+export const createActor = (value) => {
+  return API.post("/actor/add",value);
+};
+
+export const createProducer = (value) => {
+  return API.post("/producer/add",value);
 };

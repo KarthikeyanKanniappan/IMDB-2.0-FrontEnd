@@ -14,6 +14,19 @@ export const getActors = createAsyncThunk(
   }
 );
 
+export const createActor = createAsyncThunk(
+  "actor/createActor",
+  async ({values,navigate},{rejectWithValue})=>{
+    try{
+      const response = await api.createActor(values);
+      alert("Actor Added")
+      navigate("/");
+      return response.data;
+    }catch(err){
+      return rejectWithValue(err.response.data);
+    }
+  }
+)
 
 const actorSlice = createSlice({
   name: "actor",
@@ -31,6 +44,17 @@ const actorSlice = createSlice({
       state.allActors = action.payload;
     },
     [getActors.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
+    [createActor.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [createActor.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.AllMovies = action.payload;
+    },
+    [createActor.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.payload.message;
     },
