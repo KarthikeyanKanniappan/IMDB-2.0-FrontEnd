@@ -7,3 +7,15 @@ const API = axios.create({
 export const getMovie = () => {
   return API.get("/movie/");
 };
+
+export const getActors = () => {
+  return API.get("/actor/");
+};
+
+export const getProducer = () => {
+  return API.get("/producer/");
+};
+
+export const createMovie = () => {
+  return API.post("/movie/add");
+};

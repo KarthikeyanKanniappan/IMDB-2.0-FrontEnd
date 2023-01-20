@@ -7,10 +7,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import movieReducer from "./redux/movieSlice.js";
-
+import actorReducer from "./redux/actorSlice.js"
+import producerReducer from "./redux/producerSlice.js"
 const store = configureStore({
   reducer: {
     movie: movieReducer,
+    actor:actorReducer,
+    producer:producerReducer
   },
 });
 const root = ReactDOM.createRoot(document.getElementById("root"));

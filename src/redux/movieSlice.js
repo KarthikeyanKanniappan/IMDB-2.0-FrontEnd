@@ -13,6 +13,21 @@ export const getMovie = createAsyncThunk(
   }
 );
 
+export const createMovie = createAsyncThunk(
+  "movie/createMovie",
+  async ({updatedValue,navigate},{rejectWithValue})=>{
+    try{
+      const response = await api.createMovie(updatedValue);
+      // alert("Movie Added")
+      navigate("/");
+      return response.data;
+    }catch(err){
+      return rejectWithValue(err.response.data);
+    }
+  }
+)
+
+
 const movieSlice = createSlice({
   name: "movie",
   initialState: {
@@ -29,6 +44,17 @@ const movieSlice = createSlice({
       state.AllMovies = action.payload;
     },
     [getMovie.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
+    [createMovie.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [createMovie.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.AllMovies = action.payload;
+    },
+    [createMovie.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.payload.message;
     },
