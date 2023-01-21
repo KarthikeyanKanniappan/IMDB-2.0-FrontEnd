@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://i-mdb-2-0-server-git-main-karthikeyankanniappan.vercel.app",
 });
 
 export const getMovie = () => {
