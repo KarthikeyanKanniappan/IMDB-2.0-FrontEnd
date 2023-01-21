@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-
+import {Link} from "react-router-dom"
 const Carder = ({ movie }) => {
   return (
     <Card
@@ -47,7 +47,7 @@ const Carder = ({ movie }) => {
           />
         </div>
         <div className="d-flex flex-row justify-content-around ">
-          <Button className="pl-4" variant="light">
+          <Button as={Link} to={`/edit/${movie._id}`} className="pl-4" variant="light">
             Edit
           </Button>
           <Button variant="light">Delete</Button>

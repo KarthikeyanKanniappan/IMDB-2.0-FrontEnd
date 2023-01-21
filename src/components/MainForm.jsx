@@ -4,8 +4,6 @@ import ModalComponent from "./ModalComponent";
 import ModalProducer from "./ModalProducer";
 import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from "react-redux";
-import {getActors} from "../redux/actorSlice"
-import { getProducer } from "../redux/producerSlice";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { createMovie } from "../redux/movieSlice";
@@ -22,8 +20,6 @@ const MainForm = () => {
   const navigate = useNavigate();
  
   useEffect(() => {
-    dispatch(getActors());
-    dispatch(getProducer());
     setActor(allActors)
     setProducer(allProducer)
   }, []);

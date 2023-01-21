@@ -27,3 +27,11 @@ export const createActor = (value) => {
 export const createProducer = (value) => {
   return API.post("/producer/add",value);
 };
+
+export const getMovieByUser = (id) => API.get(`/movie/particular/${id}`);
+
+export const updateMovie = (values, id) => {
+  return API.patch(`/movie/edit/${id}`, values);
+};
+
+// export const getMovieByUser = (id) => API.get(`/movie/edit/${id}`);

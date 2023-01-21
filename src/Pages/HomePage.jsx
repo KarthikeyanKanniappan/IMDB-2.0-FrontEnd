@@ -2,12 +2,16 @@ import React, { useEffect } from "react";
 import Carder from "../components/Carder";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovie } from "../redux/movieSlice";
+import {getActors} from "../redux/actorSlice"
+import { getProducer } from "../redux/producerSlice";
 const HomePage = () => {
   const dispatch = useDispatch();
   const { AllMovies, loading } = useSelector((state) => ({ ...state.movie }));
 
   useEffect(() => {
     dispatch(getMovie());
+    dispatch(getActors());
+    dispatch(getProducer());
   }, []);
 
   return (
